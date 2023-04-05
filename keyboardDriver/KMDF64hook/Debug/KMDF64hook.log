@@ -1,0 +1,6 @@
+﻿  Building 'KMDF64hook' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping Debug\KMDF64hook.inf
+  Stamping [Version] section with DriverVer=03/05/2023,22.14.42.213
+  MyDriver.cpp
+c:\users\jack\source\repos\kmdf64hook\kmdf64hook\mydriver.cpp(44): error C2220: 警告被视为错误 - 没有生成“object”文件
+c:\users\jack\source\repos\kmdf64hook\kmdf64hook\mydriver.cpp(44): warning C4189: “stat”: 局部变量已初始化但不引用

@@ -1,0 +1,86 @@
+;
+; KMDF64hook.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Sample ; TODO: edit Class
+ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=KMDF64hook.cat
+DriverVer= ; TODO: set DriverVer in stampinf property pages
+
+[DestinationDirs]
+DefaultDestDir = 12
+KMDF64hook_Device_CoInstaller_CopyFiles = 11
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+KMDF64hook.sys  = 1,,
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll=1 ; make sure the number matches with SourceDisksNames
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NT$ARCH$
+
+[Standard.NT$ARCH$]
+%KMDF64hook.DeviceDesc%=KMDF64hook_Device, Root\KMDF64hook ; TODO: edit hw-id
+
+[KMDF64hook_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+KMDF64hook.sys
+
+;-------------- Service installation
+[KMDF64hook_Device.NT.Services]
+AddService = KMDF64hook,%SPSVCINST_ASSOCSERVICE%, KMDF64hook_Service_Inst
+
+; -------------- KMDF64hook driver install sections
+[KMDF64hook_Service_Inst]
+DisplayName    = %KMDF64hook.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\KMDF64hook.sys
+
+;
+;--- KMDF64hook_Device Coinstaller installation ------
+;
+
+[KMDF64hook_Device.NT.CoInstallers]
+AddReg=KMDF64hook_Device_CoInstaller_AddReg
+CopyFiles=KMDF64hook_Device_CoInstaller_CopyFiles
+
+[KMDF64hook_Device_CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
+
+[KMDF64hook_Device_CoInstaller_CopyFiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll
+
+[KMDF64hook_Device.NT.Wdf]
+KmdfService =  KMDF64hook, KMDF64hook_wdfsect
+[KMDF64hook_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+ClassName="Samples" ; TODO: edit ClassName
+DiskName = "KMDF64hook Installation Disk"
+KMDF64hook.DeviceDesc = "KMDF64hook Device"
+KMDF64hook.SVCDESC = "KMDF64hook Service"

@@ -1,0 +1,23 @@
+﻿  Building 'KMDF64hook' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping x64\Debug\KMDF64hook.inf
+  Stamping [Version] section with DriverVer=04/01/2023,21.22.48.129
+  MyDriver.cpp
+  KMDF64hook.vcxproj -> C:\Users\Jack\source\repos\KMDF64hook\x64\Debug\KMDF64hook.sys
+  Done Adding Additional Store
+  Successfully signed: C:\Users\Jack\source\repos\KMDF64hook\x64\Debug\KMDF64hook.sys
+  
+  Driver is a Universal Driver.
+  ........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  C:\Users\Jack\source\repos\KMDF64hook\x64\Debug\KMDF64hook\kmdf64hook.cat
+  Done Adding Additional Store
+  Successfully signed: C:\Users\Jack\source\repos\KMDF64hook\x64\Debug\KMDF64hook\kmdf64hook.cat
+  

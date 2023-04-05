@@ -1,0 +1,9 @@
+﻿  Building 'asynring0' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping Debug\asynring0.inf
+  Stamping [Version] section with DriverVer=04/05/2023,16.37.5.286
+  main.c
+c:\users\jack\source\repos\asynring0\asynring0\main.c(13): error C2220: 警告被视为错误 - 没有生成“object”文件
+c:\users\jack\source\repos\asynring0\asynring0\main.c(13): warning C4100: “DeviceObject”: 未引用的形参
+c:\users\jack\source\repos\asynring0\asynring0\main.c(23): warning C4100: “DeviceObject”: 未引用的形参
+c:\users\jack\source\repos\asynring0\asynring0\main.c(36): warning C4100: “DeviceObject”: 未引用的形参
+c:\users\jack\source\repos\asynring0\asynring0\main.c(59): warning C4100: “DeviceObject”: 未引用的形参
