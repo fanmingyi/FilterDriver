@@ -1,0 +1,89 @@
+;
+; asynAttach0.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Sample ; TODO: edit Class
+ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=asynAttach0.cat
+DriverVer = 04/05/2023,17.11.29.978
+
+[DestinationDirs]
+DefaultDestDir = 12
+asynAttach0_Device_CoInstaller_CopyFiles = 11
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+asynAttach0.sys  = 1,,
+;
+
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTx86
+
+[Standard.NTx86]
+%asynAttach0.DeviceDesc%=asynAttach0_Device, Root\asynAttach0 ; TODO: edit hw-id
+
+[asynAttach0_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+asynAttach0.sys
+
+;-------------- Service installation
+[asynAttach0_Device.NT.Services]
+AddService = asynAttach0,%SPSVCINST_ASSOCSERVICE%, asynAttach0_Service_Inst
+
+; -------------- asynAttach0 driver install sections
+[asynAttach0_Service_Inst]
+DisplayName    = %asynAttach0.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\asynAttach0.sys
+
+;
+;--- asynAttach0_Device Coinstaller installation ------
+;
+
+[asynAttach0_Device.NT.CoInstallers]
+AddReg=asynAttach0_Device_CoInstaller_AddReg
+CopyFiles=asynAttach0_Device_CoInstaller_CopyFiles
+
+[asynAttach0_Device_CoInstaller_AddReg]
+;
+
+
+[asynAttach0_Device_CoInstaller_CopyFiles]
+;
+
+
+[asynAttach0_Device.NT.Wdf]
+KmdfService =  asynAttach0, asynAttach0_wdfsect
+[asynAttach0_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+ClassName="Samples" ; TODO: edit ClassName
+DiskName = "asynAttach0 Installation Disk"
+asynAttach0.DeviceDesc = "asynAttach0 Device"
+asynAttach0.SVCDESC = "asynAttach0 Service"

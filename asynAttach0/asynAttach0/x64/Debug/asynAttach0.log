@@ -1,0 +1,23 @@
+﻿  Building 'asynAttach0' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping x64\Debug\asynAttach0.inf
+  Stamping [Version] section with DriverVer=04/05/2023,22.17.20.927
+  Main.cpp
+  asynAttach0.vcxproj -> C:\Users\Jack\source\repos\asynAttach0\x64\Debug\asynAttach0.sys
+  Done Adding Additional Store
+  Successfully signed: C:\Users\Jack\source\repos\asynAttach0\x64\Debug\asynAttach0.sys
+  
+  Driver is a Universal Driver.
+  ........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  C:\Users\Jack\source\repos\asynAttach0\x64\Debug\asynAttach0\asynattach0.cat
+  Done Adding Additional Store
+  Successfully signed: C:\Users\Jack\source\repos\asynAttach0\x64\Debug\asynAttach0\asynattach0.cat
+  
